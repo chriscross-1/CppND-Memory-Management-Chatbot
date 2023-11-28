@@ -31,11 +31,11 @@ public:
     ////
     ChatBot(const ChatBot& source); // copy c'tor
 
-    ChatBot operator=(const ChatBot& source); // copy assignment operator
+    ChatBot& operator=(const ChatBot& source); // copy assignment operator
 
     ChatBot(ChatBot&& source); // move c'tor
 
-    ChatBot operator=(ChatBot&& source); // move assignment operator
+    ChatBot& operator=(ChatBot&& source); // move assignment operator
     ////
     //// EOF STUDENT CODE
 

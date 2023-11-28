@@ -52,9 +52,10 @@ ChatBot::ChatBot(const ChatBot& source) // copy c'tor
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 }
 
-ChatBot ChatBot::operator=(const ChatBot& source) // copy assignment operator
+ChatBot& ChatBot::operator=(const ChatBot& source) // copy assignment operator
 {
     std::cout << "ChatBot Copy Assignment Operator\n";
 
@@ -63,11 +64,12 @@ ChatBot ChatBot::operator=(const ChatBot& source) // copy assignment operator
         return *this;
     }
 
-    delete _image;
+    delete _image; // is this even neccessary?
     _image = new wxBitmap(*source._image);
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
     return *this;
 }
@@ -80,11 +82,12 @@ ChatBot::ChatBot(ChatBot&& source) // move c'tor
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
     source._image = NULL;
 }
 
-ChatBot ChatBot::operator=(ChatBot&& source) // move assignment operator
+ChatBot& ChatBot::operator=(ChatBot&& source) // move assignment operator
 {
     std::cout << "ChatBot Move Assignment Operator\n";
 
@@ -93,11 +96,12 @@ ChatBot ChatBot::operator=(ChatBot&& source) // move assignment operator
         return *this;
     }
 
-    delete _image;
+    delete _image; // is this even neccessary?
     _image = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic = source._chatLogic;
+    _chatLogic->SetChatbotHandle(this);
 
     source._image = NULL;
 
