@@ -64,7 +64,9 @@ ChatBot& ChatBot::operator=(const ChatBot& source) // copy assignment operator
         return *this;
     }
 
-    delete _image; // is this even necessary?
+    if (_image)
+        delete _image;
+
     _image = new wxBitmap(*source._image);
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
@@ -96,7 +98,9 @@ ChatBot& ChatBot::operator=(ChatBot&& source) // move assignment operator
         return *this;
     }
 
-    delete _image; // is this even necessary?
+    if (_image)
+        delete _image;
+
     _image = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
